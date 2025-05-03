@@ -32,13 +32,10 @@ async def get_mcp_server() -> AsyncGenerator[MCPServerSse, None]:
         params={"url": MCP_SERVER_URL},
         cache_tools_list=True,
     )
-    await server.__aenter__()
-    logger.info("MCP server instance created successfully")
-    try:
-        yield server
-    finally:
-        logger.info("Cleaning up MCP server instance...")
-        await server.__aexit__(None, None, None)
+    async with server as s:
+        logger.info("MCP server instance created successfully")
+        yield s
+    logger.info("Cleaning up MCP server instance...")
 
 
 app = FastAPI()
