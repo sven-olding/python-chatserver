@@ -4,8 +4,16 @@ This project is managed using [uv](https://github.com/astral-sh/uv)
 
 ## Running the application
 
+### Development mode
+
 ```shell
 uv run fastapi dev
+```
+
+### Production mode
+
+```shell
+uv run fastapi run
 ```
 
 ## Build Docker image
