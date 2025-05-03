@@ -7,8 +7,12 @@ from agents import Agent, Runner, gen_trace_id, trace
 from agents.mcp import MCPServerSse
 from typing import AsyncGenerator
 
-# Configure logging
-logging.basicConfig(level=logging.INFO)
+# Configure logging with timestamps
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s.%(msecs)03d - %(name)s - %(levelname)s - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
 logger = logging.getLogger(__name__)
 
 load_dotenv()
